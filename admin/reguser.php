@@ -6,7 +6,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 	header('location:index.php');
 } else {
 
-	# Insert new user information into databas tblusers form form input. 
+	# Insert new user information into database tblusers form form input. 
 
 	if (isset($_POST['submit'])) {
         $idnumber = $_POST['idnumber'];
@@ -54,7 +54,6 @@ if (strlen($_SESSION['alogin']) == 0) {
     });
   }
 </script>
-
 
 	<!DOCTYPE html>
 	<html lang="en" class="no-js">
@@ -174,7 +173,6 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<input type="password" name="confirmpassword" class="form-control" required>
 													</div>
 												</div> 
-														
 
                                                 <div class="form-group">
 												    <div class="col-sm-8 col-sm-offset-2" style="text-align: center">
@@ -189,10 +187,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 									</div>
 								</div>
 							</div>
-
-											
-							
-											
+			
 							</div>
 						</div>
 

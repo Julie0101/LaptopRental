@@ -118,9 +118,9 @@ if (strlen($_SESSION['login']) == 0) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <!-- SWITCHER -->
     <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all"
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
+    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" data-default-color="true" /> />
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
     <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
@@ -252,7 +252,7 @@ if (strlen($_SESSION['login']) == 0) {
 
                                   <a href="activate.php?id=<?php echo htmlentities ($result->id);?>"onclick="return confirm('Do you really want to activate this laptop?Users will be able to book it.')" class="btn outline btn-xs active-btn"style="border-color:#2dcc70">Activate</a>
                                   <?php } else if ($result->Online==3) {?>
-                                    <a href="" class="btn outline btn-xs inactive-btn"style="border-color:#fa2837">Laptop is in use</a>
+                                    <a class="btn outline btn-xs inactive-btn"style="border-color:#fa2837">Laptop is in use</a>
                                   <?php }
                                   ?>
 
@@ -265,7 +265,11 @@ if (strlen($_SESSION['login']) == 0) {
 
                                 <div class="edit">
                                   <a href="editlaptop.php?id=<?php echo $result->id; ?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                  <?php if ($result->Online==1) { ?>
                                   <a href="my-laptops.php?del=<?php echo $result->id; ?>" onclick="return confirm('Do you want to delete');"><i class="fa fa-trash"></i></a>
+                                  <?php } else if ($result->Online==3) { ?>
+                                    <a href="my-laptops.php?id=<?php echo $result->id; ?>" onclick="return confirm('Ooops! You cant delete this laptop while it is in use.');"><i class="fa fa-trash"></i></a>
+                                  <?php }?>
                                 </div>
 
                                 <div class="clearfix"></div>

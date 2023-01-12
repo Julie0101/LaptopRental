@@ -31,9 +31,9 @@ error_reporting(0);
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
   <!-- SWITCHER -->
   <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+<link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all"
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
+  <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" data-default-color="true" /> />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
@@ -57,8 +57,6 @@ error_reporting(0);
     <div align="center" class="mt-5">
       <h1 class="fa fa-check-circle" style="font-size: 150px; color: green;"></h1>
       <h5>Your Booking request was placed succesfuly. Please await confirmation from the laptop owner.</h5><br>
-      <h6>We Have Received Your Order and is currently in processing.</h6><br>
-
       <div class="row justify-content-center">
         <div class="col-md-12">
           <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn"><i class="fa fa-info-circle"></i>See Booking Details</button>&nbsp;&nbsp;
@@ -102,7 +100,7 @@ error_reporting(0);
                           tblbooking.LaptopId,tblbooking.id  from tblbooking
                           join tbllaptops on tbllaptops.id=tblbooking.LaptopId 
                           join tblusers on tblusers.EmailId=tblbooking.userEmail 
-                          join tblbrands on tbllaptops.LaptopBrand=tblbrands.id where tblbooking.userEmail = ? ";
+                          join tblbrands on tbllaptops.LaptopBrand=tblbrands.id where tblbooking.userEmail = ? ORDER BY id DESC LIMIT 0,1";
                 $query = $dbh->prepare($sql);
                 $query->execute([$useremail]);
                 $results = $query->fetchAll(PDO::FETCH_OBJ);

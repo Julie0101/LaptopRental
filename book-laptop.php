@@ -87,9 +87,9 @@ if (isset($_POST['submit'])) {
 
    <!-- SWITCHER -->
    <link rel="stylesheet" id="switcher-css" type="text/css" href="assets/switcher/css/switcher.css" media="all" />
-   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all" data-default-color="true" />
+ <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/red.css" title="red" media="all"
    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/orange.css" title="orange" media="all" />
-   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" />
+   <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/blue.css" title="blue" media="all" data-default-color="true" /> />
    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/pink.css" title="pink" media="all" />
    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/green.css" title="green" media="all" />
    <link rel="alternate stylesheet" type="text/css" href="assets/switcher/css/purple.css" title="purple" media="all" />
@@ -196,12 +196,12 @@ if (isset($_POST['submit'])) {
                    <form method="post" name="book">
                         <div class="form-group">
                             <label for="">From Date:</label>
-                            <input type="date" class="form-control" name="fromdate" placeholder="From Date" id="fromdate" required>
+                            <input type="date" class="form-control" name="fromdate" placeholder="From Date" id="fromdate" min=<?php echo date('Y-m-d');?> required>
                         </div>
 
                         <div class="form-group">
                             <label for="">To Date:</label>
-                            <input type="date" class="form-control" name="todate" placeholder="To Date" id="todate" onchange="getprice()" required>
+                            <input type="date" class="form-control" name="todate" placeholder="To Date" id="todate" min=<?php echo date('Y-m-d', strtotime("+ 1 day"));?> onchange="getprice()" required>
                         </div>
 
 
@@ -217,7 +217,7 @@ if (isset($_POST['submit'])) {
 
                         <div class="form-group">
                             <label for="">Payment Method:</label>
-                            <select class="form-select" aria-label="Default select example" name="paymentmode">
+                            <select class="form-control" aria-label="Default select example" name="paymentmode">
                                 <option selected>Payment Mode</option>
                                 <option value="Mpesa on Delivery">Mpesa on Delivery</option>
                                 <option value="Cash on Delivery">Cash on Delivery</option>
